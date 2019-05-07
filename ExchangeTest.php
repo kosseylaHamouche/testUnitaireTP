@@ -22,6 +22,15 @@ class ExchangeTest extends TestCase{
         $this->assertTrue($result);
     }
 
+    public function testSaveisNotValidProductOwnerNotValid() {
+        $mockproductownerisnotvalid = $this->createMock(User::class, array('isValid'), array(null, null, null, null));
+        $mockproductownerisnotvalid->expects($this->any())->method('isValid')->will($this->returnValue(false));
+
+        $this->product->setOwner($mockproductownerisnotvalid);
+        $result = $this->exchange->save();
+        $this->assertFalse($result);
+    }
+
     public function testIsNotValidReceiverNotValid() {
         $mockreceiverisnotvalid = $this->createMock(User::class, array('isValid'), array(null, null, null, null));
         $mockreceiverisnotvalid->expects($this->any())->method('isValid')->will($this->returnValue(false));
@@ -68,6 +77,7 @@ class ExchangeTest extends TestCase{
 
 
         $this->exchange = new Exchange($mockReceiver, $this->product, '2021-06-01', '2022-07-01', $mockemailSender, $mockdbConnection);
+
 
     }
 
