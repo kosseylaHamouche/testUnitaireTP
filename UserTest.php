@@ -1,5 +1,7 @@
 <?php
+
 require("User.php");
+
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase{
@@ -36,3 +38,5 @@ class UserTest extends TestCase{
 
 
 }
+
+?>

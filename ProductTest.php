@@ -1,9 +1,11 @@
 <?php
+
 require("Product.php");
 require("User.php");
+
 use PHPUnit\Framework\TestCase;
 
-class ProductTest {
+class ProductTest extends TestCase{
 
     public function testisValid() {
         $user = new User("boris", "test", "test@test.fr", 20);
@@ -54,3 +56,5 @@ class ProductTest {
         $this->product = NULL;
     }
 }
+
+?>
